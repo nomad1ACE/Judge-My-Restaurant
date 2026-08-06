@@ -10,10 +10,15 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Allow frontend dev server to call the API during development
+# Allow frontend apps to call the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8082", "http://127.0.0.1:8082", "http://localhost:8081"],
+    allow_origins=["*"] if True else [
+        "http://localhost:8082",
+        "http://127.0.0.1:8082",
+        "http://localhost:8081",
+        "https://grgdhghxccvdcddddd-prgu1wj5a-t9860453572-gmailcoms-projects.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
